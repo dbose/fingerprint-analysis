@@ -1,0 +1,14 @@
+Reading configurations from .\FPAnalysis.dsp
+Finished reading configurations from .\FPAnalysis.dsp
+ Converting C:\Documents and Settings\Debasish Bose\My Documents\VCProject\FPAnalysis\FPAnalysis.dsw
+Generating project group file C:\Documents and Settings\Debasish Bose\My Documents\VCProject\FPAnalysis\FPAnalysis.bpg
+FPAnalysis.bpg generated
+Done converting workspace file C:\Documents and Settings\Debasish Bose\My Documents\VCProject\FPAnalysis\FPAnalysis.dsw
+ Converting .\FPAnalysis.dsp
+Using configuration "FPAnalysis - Win32 Debug"
+Warning: no conversion for compiler option: /Gm
+Warning: no conversion for compiler option: /FR
+Warning: no conversion for compiler option: /FD
+Warning: no conversion for compiler option: /GZ
+Warning: no conversion for linker option: /PDBTYPE:SEPT
+Generating FPAnalysis.bpr

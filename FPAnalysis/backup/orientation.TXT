@@ -1,0 +1,373 @@
+
+	float R, G, B;
+	UINT  i, j, k, l,x,y;
+
+	// Setup and Call Progress Dialog
+	CProgressDlg pdlg;
+	pdlg.Create();
+	unsigned int pixels = (unsigned int)(m_height * m_width * 0.01); // 1% of total pixels
+	unsigned int pixelsProcessed = 0;
+	bool canceled = FALSE;
+   
+
+	/*
+	  Gradient operator may be simple SOBEL operator to more complex Marr-Hildreth
+	  operator.We'll use [SOBEL7] mask.prepare for Hx & Hx (3 # 3) SOBEL operator 
+	  masks 
+	*/
+	float Hx[3][3];
+
+	Hx[0][0]=1.0;
+	Hx[0][1]=0.0;
+	Hx[0][2]=-1.0;
+	Hx[1][0]=1.414;      
+	Hx[1][1]=0.0;		 
+	Hx[1][2]=-1.414;	 
+	Hx[2][0]=1.0;
+	Hx[2][1]=0.0;
+	Hx[2][2]=-1.0;
+
+	float Hy[3][3];
+
+	Hy[0][0]=1.00;
+    Hy[0][1]=1.414;
+	Hy[0][2]=1.00;
+	Hy[1][0]=0.0;
+	Hy[1][1]=0.0;
+	Hy[1][2]=0.0;
+	Hy[2][0]=-1.0;
+	Hy[2][1]=-1.414;
+	Hy[2][2]=-1.00;
+
+	// Allocate Gx & GY
+	imagematrix GX=CreateImageMatrix(m_height,m_width);
+	imagematrix GY=CreateImageMatrix(m_height,m_width);
+	
+	// Fill GX
+	pdlg.SetDialogCaption("Calculating Horizontal Gradient...");
+	for (i = 0; i < (int)m_height; i++)
+	{
+		if (pdlg.CheckCancelButton())
+			if(AfxMessageBox("Are you sure you want to Cancel?", MB_YESNO)==IDYES)
+			{
+				canceled = true;
+				break;
+			}
+
+		for (j = 0; j < (int)m_width; j++)
+		{
+			R = G = B = 0;
+			for (k = 0; k <=2; k++)
+			{
+				for (l = 0; l <= 2; l++)
+				{
+					x = i + k - 1;
+					y = j + l - 1;
+
+					if (x >= 0 && x < (int)m_height && y >= 0 && y < (int)m_width)
+					{
+						R += (float)m_img[x][y].r * Hx[k][l];
+						G += (float)m_img[x][y].g * Hx[k][l];
+						B += (float)m_img[x][y].b * Hx[k][l];
+					}
+				}
+			}
+
+			GX[i][j].color(R, G, B);
+
+			pixelsProcessed++;
+			if (pixelsProcessed % pixels == 0)
+				pdlg.StepIt();
+		}
+	}
+    
+	// Fill GY
+    pdlg.SetPos(0);
+	pdlg.SetDialogCaption("Calculating Vertical Gradient...");
+
+	for (i = 0; i < m_height; i++)
+	{
+		if (pdlg.CheckCancelButton())
+			if(AfxMessageBox("Are you sure you want to Cancel?", MB_YESNO)==IDYES)
+			{
+				canceled = true;
+				break;
+			}
+
+		for (j = 0; j < m_width; j++)
+		{
+			R = G = B = 0;
+			for (k = 0; k <=2; k++)
+			{
+				for (l = 0; l <= 2; l++)
+				{
+					x = i + k - 1;
+					y = j + l - 1;
+
+					if (x >= 0 && x < (int)m_height && y >= 0 && y < (int)m_width)
+					{
+						R += (float)m_img[x][y].r * Hy[k][l];
+						G += (float)m_img[x][y].g * Hy[k][l];
+						B += (float)m_img[x][y].b * Hy[k][l];
+					}
+				}
+			}
+
+			GY[i][j].color(R, G, B);
+
+			pixelsProcessed++;
+			if (pixelsProcessed % pixels == 0)
+				pdlg.StepIt();
+		}
+	}
+
+	//calculate raw orientation
+	pdlg.SetPos(0);
+	pdlg.SetDialogCaption("Calculating  Raw Orientation...");
+
+	float N,D;
+	float theta;
+	BYTE gx,gy;
+	int circumference = 15;
+	int radius = circumference/2;
+	float** phiX = CreateFloatMatrix(m_height,m_width);
+	float** phiY = CreateFloatMatrix(m_height,m_width);
+	
+
+	for (i = 0; i < m_height; i++)
+	{
+		if (pdlg.CheckCancelButton())
+			if(AfxMessageBox("Are you sure you want to Cancel?", MB_YESNO)==IDYES)
+			{
+				canceled = true;
+				break;
+			}
+
+		for (j = 0; j < m_width; j++)
+		{
+			//iterate through the block W(15 # 15)
+			N = 0;
+		    D = 0;
+			for (k = 0; k < circumference; k++)
+			{
+				for (l = 0; l < circumference; l++)
+				{
+					x = i + k - radius;
+					y = j + l - radius;
+
+					if (x >= 0 && x < (int)m_height && y >= 0 && y < (int)m_width)
+					{
+						//TODO: Add extra block operations here
+
+						gx = GX[k][l].intensity();
+				        gy = GY[k][l].intensity();
+
+				        N += ( 2 * gx * gy );
+				        D += ( sqr(gx) - sqr(gy) );
+
+					}
+				}
+			}
+
+			theta = 0.5 * atan2(N , D);
+
+  /*
+	In many cases "theta" is not the correct estimation of orientation field
+	due to noise,corrupted ridge & furrow structures.since local ridge 
+	orientation varies very slowly in a local neighborhood without singular
+	points(eg : ending & bifurcation)a LPF may be applied to rectify incorrect 
+	orientation.To perform LP-filtering orientation image must be converted to
+	continuous vector field.
+  */
+			  
+			phiX[i][j] = cos(2 * theta);
+			phiY[i][j] = sin(2 * theta);
+
+			pixelsProcessed++;
+			if (pixelsProcessed % pixels == 0)
+				pdlg.StepIt();
+		}
+
+	}
+	
+	//smooth by LPF
+	pdlg.SetPos(0);
+	pdlg.SetDialogCaption("Applying LPF For Smoothing...");
+
+	float LPF[5][5];
+
+	LPF[0][0] = 1.00/25.00;
+	LPF[0][1] = 1.00/25.00;
+	LPF[0][2] = 1.00/25.00;
+	LPF[0][3] = 1.00/25.00;
+	LPF[0][4] = 1.00/25.00;
+	LPF[1][0] = 1.00/25.00;
+	LPF[1][1] = 1.00/25.00;
+	LPF[1][2] = 1.00/25.00;
+	LPF[1][3] = 1.00/25.00;
+	LPF[1][3] = 1.00/25.00;
+	LPF[2][0] = 1.00/25.00;
+	LPF[2][1] = 1.00/25.00;
+	LPF[2][2] = 1.00/25.00;
+	LPF[2][3] = 1.00/25.00;
+	LPF[2][4] = 1.00/25.00;
+	LPF[3][0] = 1.00/25.00;
+	LPF[3][1] = 1.00/25.00;
+	LPF[3][2] = 1.00/25.00;
+	LPF[3][3] = 1.00/25.00;
+	LPF[3][4] = 1.00/25.00;
+	LPF[4][0] = 1.00/25.00;
+	LPF[4][1] = 1.00/25.00;
+	LPF[4][2] = 1.00/25.00;
+	LPF[4][3] = 1.00/25.00;
+	LPF[4][4] = 1.00/25.00;
+
+	float** phiXSmoothed = CreateFloatMatrix(m_height,m_width);
+	float** phiYSmoothed = CreateFloatMatrix(m_height,m_width);
+    float sum1,sum2;
+
+	for (i = 0; i < m_height; i++)
+	{
+		if (pdlg.CheckCancelButton())
+			if(AfxMessageBox("Are you sure you want to Cancel?", MB_YESNO)==IDYES)
+			{
+				canceled = true;
+				break;
+			}
+
+		for (j = 0; j < m_width; j++)
+		{
+			sum1 = 0;
+			sum2 = 0;
+
+			for (k = 0; k <=4; k++)
+			{
+				for (l = 0; l <= 4; l++)
+				{
+					x = i + k - 2;
+					y = j + l - 2;
+
+					if (x >= 0 && x < (int)m_height && y >= 0 && y < (int)m_width)
+					{
+						sum1 += (phiX[x][y] * LPF[k][l]);
+						sum2 += (phiY[x][y] * LPF[k][l]);
+					}
+				}
+			}
+
+			phiXSmoothed[i][j] = sum1;
+			phiYSmoothed[i][j] = sum2;
+
+			pixelsProcessed++;
+			if (pixelsProcessed % pixels == 0)
+				pdlg.StepIt();
+
+		}
+
+	}
+
+    /* 
+	   finally compute the orientation and don't forget to allocate the float
+	   matrix :- m_orientation which will hold orientation at each pixel (i,j)
+	*/
+
+	m_orientation = CreateFloatMatrix(m_height,m_width);
+
+	pdlg.SetPos(0);
+	pdlg.SetDialogCaption("Calculating Actual Orientation...");
+	
+	for (i = 0; i < m_height; i++)
+	{
+		if (pdlg.CheckCancelButton())
+			if(AfxMessageBox("Are you sure you want to Cancel?", MB_YESNO)==IDYES)
+			{
+				canceled = true;
+				break;
+			}
+
+		for (j = 0; j < m_width; j++)
+		{
+			m_orientation[i][j] = 0.5 * atan2(phiYSmoothed[i][j],phiXSmoothed[i][j]);
+
+			pixelsProcessed++;
+			if (pixelsProcessed % pixels == 0)
+				pdlg.StepIt();
+		}
+
+	}
+
+	/* 
+	  let's overlay orientation field on the image.do it block-by-block
+	*/
+	//invert the original & copy it to another to draw on...
+    CopyImageMatrix(m_processed,InvertImageMatrix(m_img));
+
+	int    blocksize = 16;
+	int    blocksProcessed = 0;
+	int    blocks = ((int)(m_height * m_width))/(blocksize * blocksize);
+	UINT   xMiddle,yMiddle;
+	int    x0,y0,x1,y1;
+	
+	pdlg.SetPos(0);
+	pdlg.SetDialogCaption("Ovelaying Orientation Field...");
+	
+	for (i = 0 ;; i+=blocksize)
+	{
+		if ( i+blocksize > m_height)
+			break;
+
+		if (pdlg.CheckCancelButton())
+			if(AfxMessageBox("Are you sure you want to Cancel?", MB_YESNO)==IDYES)
+			{
+				canceled = true;
+				break;
+			}
+
+		for (j = 0 ;; j+=blocksize)
+		{
+			if (j+blocksize > m_width)
+				break;
+
+			//TODO: add extra block operations here
+			xMiddle = i + 7;
+			yMiddle = j + 7;
+
+			//check for boundary cross-over
+			if (IsCrossedBoundary(m_height,m_width,xMiddle,yMiddle,15)==false)
+			{
+				//theta = m_orientation[xMiddle][yMiddle];
+				
+				x0 = (int)(xMiddle - cos(theta));
+				y0 = (int)(yMiddle - sin(theta));
+
+				x1 = (int)(xMiddle + cos(theta));
+				y1 = (int)(yMiddle + sin(theta));
+ 
+				DrawLineOnTop(CPoint(x0,y0),CPoint(x1,y1),RGB(255,0,0));
+
+			}
+
+
+			 blocksProcessed++;
+			   if (blocksProcessed % blocks == 0)
+				  pdlg.StepIt();
+
+		}
+
+	}
+
+	//invert again to prevent 180 degree rotation...
+    CopyImageMatrix(m_processed,InvertImageMatrix(m_processed));
+
+    // Free all those junks
+	FreeImageMatrix(GX,m_height);
+	FreeImageMatrix(GY,m_height);
+	FreeFloatMatrix(phiX,m_height);
+	FreeFloatMatrix(phiXSmoothed,m_height);
+	FreeFloatMatrix(phiY,m_height);
+	FreeFloatMatrix(phiYSmoothed,m_height);
+	
+	pdlg.DestroyWindow();
+
+	return !canceled;
+

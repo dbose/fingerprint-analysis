@@ -1,0 +1,157 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: FPAnalysis - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSPF3.tmp" with contents
+[
+/nologo /MTd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_WINDOWS" /D "_MBCS" /FR"Debug/" /Fp"Debug/FPAnalysis.pch" /Yu"stdafx.h" /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"C:\Documents and Settings\Debasish Bose\My Documents\VCProject\FPAnalysis\Image.cpp"
+]
+Creating command line "cl.exe @C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSPF3.tmp" 
+Creating temporary file "C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSPF4.tmp" with contents
+[
+JpegLib.lib /nologo /subsystem:windows /incremental:yes /pdb:"Debug/FPAnalysis.pdb" /debug /machine:I386 /out:"Debug/FPAnalysis.exe" /pdbtype:sept 
+".\Debug\agentctlanimationnames1.obj"
+".\Debug\agentctlaudioobjectex1.obj"
+".\Debug\agentctlballoonex1.obj"
+".\Debug\agentctlcharacterex1.obj"
+".\Debug\agentctlcharacters1.obj"
+".\Debug\agentctlcommand1.obj"
+".\Debug\agentctlcommandex1.obj"
+".\Debug\agentctlcommandsex1.obj"
+".\Debug\agentctlcommandswindow1.obj"
+".\Debug\agentctlex1.obj"
+".\Debug\agentctlpropertysheet1.obj"
+".\Debug\agentctlrequest1.obj"
+".\Debug\agentctlspeechinput1.obj"
+".\Debug\AgentDlg.obj"
+".\Debug\BMPFile.obj"
+".\Debug\ChildFrm.obj"
+".\Debug\Dialogs.obj"
+".\Debug\dialogs1.obj"
+".\Debug\EditDlg.obj"
+".\Debug\FPAnalysis.obj"
+".\Debug\FPAnalysisDoc.obj"
+".\Debug\FPAnalysisView.obj"
+".\Debug\GaussianPage.obj"
+".\Debug\HistogramPage.obj"
+".\Debug\Image.obj"
+".\Debug\imgedit.obj"
+".\Debug\imgscan.obj"
+".\Debug\jpegfile.obj"
+".\Debug\MainFrm.obj"
+".\Debug\MSAgent2.obj"
+".\Debug\ScanDlg.obj"
+".\Debug\SkinDialog1.obj"
+".\Debug\StdAfx.obj"
+".\Debug\FPAnalysis.res"
+]
+Creating command line "link.exe @C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSPF4.tmp"
+<h3>Output Window</h3>
+Compiling...
+Image.cpp
+C:\Documents and Settings\Debasish Bose\My Documents\VCProject\FPAnalysis\Image.cpp(1608) : warning C4018: '>' : signed/unsigned mismatch
+C:\Documents and Settings\Debasish Bose\My Documents\VCProject\FPAnalysis\Image.cpp(1609) : warning C4018: '>' : signed/unsigned mismatch
+C:\Documents and Settings\Debasish Bose\My Documents\VCProject\FPAnalysis\Image.cpp(1972) : warning C4244: '=' : conversion from 'long' to 'unsigned char', possible loss of data
+C:\Documents and Settings\Debasish Bose\My Documents\VCProject\FPAnalysis\Image.cpp(1988) : warning C4244: '=' : conversion from 'long' to 'unsigned char', possible loss of data
+C:\Documents and Settings\Debasish Bose\My Documents\VCProject\FPAnalysis\Image.cpp(2046) : warning C4244: 'initializing' : conversion from 'double' to 'unsigned int', possible loss of data
+C:\Documents and Settings\Debasish Bose\My Documents\VCProject\FPAnalysis\Image.cpp(3329) : warning C4244: 'initializing' : conversion from 'double' to 'unsigned int', possible loss of data
+C:\Documents and Settings\Debasish Bose\My Documents\VCProject\FPAnalysis\Image.cpp(3355) : warning C4018: '<=' : signed/unsigned mismatch
+C:\Documents and Settings\Debasish Bose\My Documents\VCProject\FPAnalysis\Image.cpp(3357) : warning C4018: '<=' : signed/unsigned mismatch
+C:\Documents and Settings\Debasish Bose\My Documents\VCProject\FPAnalysis\Image.cpp(3367) : warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+C:\Documents and Settings\Debasish Bose\My Documents\VCProject\FPAnalysis\Image.cpp(3394) : warning C4305: '+=' : truncation from 'const double' to 'float'
+C:\Documents and Settings\Debasish Bose\My Documents\VCProject\FPAnalysis\Image.cpp(3398) : warning C4305: '+=' : truncation from 'const double' to 'float'
+C:\Documents and Settings\Debasish Bose\My Documents\VCProject\FPAnalysis\Image.cpp(3410) : warning C4305: '+=' : truncation from 'const double' to 'float'
+C:\Documents and Settings\Debasish Bose\My Documents\VCProject\FPAnalysis\Image.cpp(3425) : warning C4244: 'argument' : conversion from 'double' to 'int', possible loss of data
+C:\Documents and Settings\Debasish Bose\My Documents\VCProject\FPAnalysis\Image.cpp(3425) : warning C4244: 'argument' : conversion from 'double' to 'int', possible loss of data
+C:\Documents and Settings\Debasish Bose\My Documents\VCProject\FPAnalysis\Image.cpp(3428) : warning C4244: 'argument' : conversion from 'double' to 'int', possible loss of data
+C:\Documents and Settings\Debasish Bose\My Documents\VCProject\FPAnalysis\Image.cpp(3428) : warning C4244: 'argument' : conversion from 'double' to 'int', possible loss of data
+C:\Documents and Settings\Debasish Bose\My Documents\VCProject\FPAnalysis\Image.cpp(3437) : warning C4244: 'argument' : conversion from 'double' to 'int', possible loss of data
+C:\Documents and Settings\Debasish Bose\My Documents\VCProject\FPAnalysis\Image.cpp(3437) : warning C4244: 'argument' : conversion from 'double' to 'int', possible loss of data
+C:\Documents and Settings\Debasish Bose\My Documents\VCProject\FPAnalysis\Image.cpp(3440) : warning C4244: 'argument' : conversion from 'double' to 'int', possible loss of data
+C:\Documents and Settings\Debasish Bose\My Documents\VCProject\FPAnalysis\Image.cpp(3440) : warning C4244: 'argument' : conversion from 'double' to 'int', possible loss of data
+C:\Documents and Settings\Debasish Bose\My Documents\VCProject\FPAnalysis\Image.cpp(3483) : warning C4305: '=' : truncation from 'const double' to 'float'
+C:\Documents and Settings\Debasish Bose\My Documents\VCProject\FPAnalysis\Image.cpp(3485) : warning C4305: '=' : truncation from 'const double' to 'float'
+C:\Documents and Settings\Debasish Bose\My Documents\VCProject\FPAnalysis\Image.cpp(3493) : warning C4305: '=' : truncation from 'const double' to 'float'
+C:\Documents and Settings\Debasish Bose\My Documents\VCProject\FPAnalysis\Image.cpp(3499) : warning C4305: '=' : truncation from 'const double' to 'float'
+C:\Documents and Settings\Debasish Bose\My Documents\VCProject\FPAnalysis\Image.cpp(3532) : warning C4244: '+=' : conversion from 'float' to 'unsigned char', possible loss of data
+C:\Documents and Settings\Debasish Bose\My Documents\VCProject\FPAnalysis\Image.cpp(3533) : warning C4244: '+=' : conversion from 'float' to 'unsigned char', possible loss of data
+C:\Documents and Settings\Debasish Bose\My Documents\VCProject\FPAnalysis\Image.cpp(3534) : warning C4244: '+=' : conversion from 'float' to 'unsigned char', possible loss of data
+C:\Documents and Settings\Debasish Bose\My Documents\VCProject\FPAnalysis\Image.cpp(3551) : warning C4018: '<' : signed/unsigned mismatch
+C:\Documents and Settings\Debasish Bose\My Documents\VCProject\FPAnalysis\Image.cpp(3560) : warning C4018: '<' : signed/unsigned mismatch
+C:\Documents and Settings\Debasish Bose\My Documents\VCProject\FPAnalysis\Image.cpp(3572) : warning C4244: '+=' : conversion from 'float' to 'unsigned char', possible loss of data
+C:\Documents and Settings\Debasish Bose\My Documents\VCProject\FPAnalysis\Image.cpp(3573) : warning C4244: '+=' : conversion from 'float' to 'unsigned char', possible loss of data
+C:\Documents and Settings\Debasish Bose\My Documents\VCProject\FPAnalysis\Image.cpp(3574) : warning C4244: '+=' : conversion from 'float' to 'unsigned char', possible loss of data
+C:\Documents and Settings\Debasish Bose\My Documents\VCProject\FPAnalysis\Image.cpp(3594) : warning C4244: 'initializing' : conversion from 'double' to 'unsigned int', possible loss of data
+C:\Documents and Settings\Debasish Bose\My Documents\VCProject\FPAnalysis\Image.cpp(3623) : warning C4018: '<=' : signed/unsigned mismatch
+C:\Documents and Settings\Debasish Bose\My Documents\VCProject\FPAnalysis\Image.cpp(3625) : warning C4018: '<=' : signed/unsigned mismatch
+C:\Documents and Settings\Debasish Bose\My Documents\VCProject\FPAnalysis\Image.cpp(3638) : warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+C:\Documents and Settings\Debasish Bose\My Documents\VCProject\FPAnalysis\Image.cpp(3643) : warning C4018: '<=' : signed/unsigned mismatch
+C:\Documents and Settings\Debasish Bose\My Documents\VCProject\FPAnalysis\Image.cpp(3645) : warning C4018: '<=' : signed/unsigned mismatch
+C:\Documents and Settings\Debasish Bose\My Documents\VCProject\FPAnalysis\Image.cpp(3600) : warning C4101: 'angle' : unreferenced local variable
+C:\Documents and Settings\Debasish Bose\My Documents\VCProject\FPAnalysis\Image.cpp(3897) : warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+C:\Documents and Settings\Debasish Bose\My Documents\VCProject\FPAnalysis\Image.cpp(3901) : warning C4244: '=' : conversion from 'double' to 'float', possible loss of data
+C:\Documents and Settings\Debasish Bose\My Documents\VCProject\FPAnalysis\Image.cpp(3845) : warning C4101: 'value' : unreferenced local variable
+C:\Documents and Settings\Debasish Bose\My Documents\VCProject\FPAnalysis\Image.cpp(3844) : warning C4101: 'x' : unreferenced local variable
+C:\Documents and Settings\Debasish Bose\My Documents\VCProject\FPAnalysis\Image.cpp(3844) : warning C4101: 'y' : unreferenced local variable
+C:\Documents and Settings\Debasish Bose\My Documents\VCProject\FPAnalysis\Image.cpp(3844) : warning C4101: 'k' : unreferenced local variable
+C:\Documents and Settings\Debasish Bose\My Documents\VCProject\FPAnalysis\Image.cpp(3844) : warning C4101: 'l' : unreferenced local variable
+C:\Documents and Settings\Debasish Bose\My Documents\VCProject\FPAnalysis\Image.cpp(4193) : warning C4101: 'pix' : unreferenced local variable
+C:\Documents and Settings\Debasish Bose\My Documents\VCProject\FPAnalysis\Image.cpp(4304) : warning C4101: 'k' : unreferenced local variable
+C:\Documents and Settings\Debasish Bose\My Documents\VCProject\FPAnalysis\Image.cpp(4346) : warning C4101: 'e' : unreferenced local variable
+C:\Documents and Settings\Debasish Bose\My Documents\VCProject\FPAnalysis\Image.cpp(4372) : warning C4101: 'e' : unreferenced local variable
+C:\Documents and Settings\Debasish Bose\My Documents\VCProject\FPAnalysis\Image.cpp(932) : warning C4715: 'CImage::NeighborhoodSum' : not all control paths return a value
+C:\Documents and Settings\Debasish Bose\My Documents\VCProject\FPAnalysis\Image.cpp(973) : warning C4715: 'CImage::TransitionSum' : not all control paths return a value
+C:\Documents and Settings\Debasish Bose\My Documents\VCProject\FPAnalysis\Image.cpp(3677) : warning C4715: 'CImage::MarkRegionOfInterest' : not all control paths return a value
+Linking...
+Creating temporary file "C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSPF5.tmp" with contents
+[
+/nologo /o"Debug/FPAnalysis.bsc" 
+".\Debug\StdAfx.sbr"
+".\Debug\agentctlanimationnames1.sbr"
+".\Debug\agentctlaudioobjectex1.sbr"
+".\Debug\agentctlballoonex1.sbr"
+".\Debug\agentctlcharacterex1.sbr"
+".\Debug\agentctlcharacters1.sbr"
+".\Debug\agentctlcommand1.sbr"
+".\Debug\agentctlcommandex1.sbr"
+".\Debug\agentctlcommandsex1.sbr"
+".\Debug\agentctlcommandswindow1.sbr"
+".\Debug\agentctlex1.sbr"
+".\Debug\agentctlpropertysheet1.sbr"
+".\Debug\agentctlrequest1.sbr"
+".\Debug\agentctlspeechinput1.sbr"
+".\Debug\AgentDlg.sbr"
+".\Debug\BMPFile.sbr"
+".\Debug\ChildFrm.sbr"
+".\Debug\Dialogs.sbr"
+".\Debug\dialogs1.sbr"
+".\Debug\EditDlg.sbr"
+".\Debug\FPAnalysis.sbr"
+".\Debug\FPAnalysisDoc.sbr"
+".\Debug\FPAnalysisView.sbr"
+".\Debug\GaussianPage.sbr"
+".\Debug\HistogramPage.sbr"
+".\Debug\Image.sbr"
+".\Debug\imgedit.sbr"
+".\Debug\imgscan.sbr"
+".\Debug\jpegfile.sbr"
+".\Debug\MainFrm.sbr"
+".\Debug\MSAgent2.sbr"
+".\Debug\ScanDlg.sbr"
+".\Debug\SkinDialog1.sbr"]
+Creating command line "bscmake.exe @C:\DOCUME~1\ADMINI~1\LOCALS~1\Temp\RSPF5.tmp"
+Creating browse info file...
+<h3>Output Window</h3>
+
+
+
+<h3>Results</h3>
+FPAnalysis.exe - 0 error(s), 53 warning(s)
+</pre>
+</body>
+</html>

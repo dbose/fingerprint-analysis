@@ -1,0 +1,34 @@
+Microsoft Developer Studio Workspace File, Format Version 6.00
+# WARNING: DO NOT EDIT OR DELETE THIS WORKSPACE FILE!
+
+###############################################################################
+
+Project: "FPAnalysis"=".\FPAnalysis.dsp" - Package Owner=<4>
+
+Package=<5>
+{{{
+}}}
+
+Package=<4>
+{{{
+}}}
+
+###############################################################################
+
+Global:
+
+Package=<5>
+{{{
+}}}
+
+Package=<3>
+{{{
+    {84926CA0-2941-101C-816F-0E6013114B7F}
+    {6D940280-9F11-11CE-83FD-02608C3EC08A}
+    {28D47530-CF84-11D1-834C-00A0249F0C28}
+    {A920DEC5-A3F6-4057-B405-70E5F1A1E1A3}
+    {D45FD31B-5C6E-11D1-9EC1-00C04FD7081F}
+}}}
+
+###############################################################################
+

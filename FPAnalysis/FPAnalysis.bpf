@@ -1,0 +1,21 @@
+USEUNIT(".\BMPFile.cpp");
+USEUNIT(".\ChildFrm.cpp");
+USEUNIT(".\Dialogs.cpp");
+USEUNIT(".\dialogs1.cpp");
+USEUNIT(".\EditDlg.cpp");
+USEUNIT(".\FPAnalysis.cpp");
+USEUNIT(".\FPAnalysisDoc.cpp");
+USEUNIT(".\FPAnalysisView.cpp");
+USEUNIT(".\gif.cpp");
+USEUNIT(".\Image.cpp");
+USEUNIT(".\imgedit.cpp");
+USEUNIT(".\imgscan.cpp");
+USEUNIT(".\jpegfile.cpp");
+USEUNIT(".\MainFrm.cpp");
+USEUNIT(".\ScanDlg.cpp");
+USEUNIT(".\SkinDialog1.cpp");
+USEUNIT(".\StdAfx.cpp");
+USERC(".\FPAnalysis.rc");
+USEFILE("vctobpr.log");
+
+#define WinMain
